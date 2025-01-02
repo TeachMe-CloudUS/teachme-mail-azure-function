@@ -6,6 +6,9 @@ public class EmailRequest {
     private String subject;
     private String body;
 
+    public EmailRequest() {
+    }
+
     public String getTo() {
         return to;
     }

@@ -16,11 +16,6 @@ public class EmailSenderFunction {
         this.mailSender = new SimpleEmailSender();
     }
 
-    /**
-     * This function listens at endpoint "/api/sendMail". Two ways to invoke it using "curl" command in bash:
-     * 1. curl -d "HTTP Body" {your host}/api/sendMail
-     * 2. curl "{your host}/api/sendMail?name=HTTP%20Query"
-     */
     @FunctionName("sendMail")
     public HttpResponseMessage sendMail(
             @HttpTrigger(
@@ -30,6 +25,7 @@ public class EmailSenderFunction {
             HttpRequestMessage<Optional<EmailRequest>> request,
             final ExecutionContext context) {
         Optional<EmailRequest> emailRequest = request.getBody();
+
         if (emailRequest.isEmpty()) {
             return request.createResponseBuilder(HttpStatus.BAD_REQUEST)
                     .body("Invalid email request").build();
