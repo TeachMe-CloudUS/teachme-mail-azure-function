@@ -1,0 +1,17 @@
+services:
+  mail-azure-function:
+    container_name: mail-az-function
+    build: .
+    ports:
+      - "80"
+    environment:
+      - SMTP_HOST
+      - SMTP_PORT
+      - SMTP_USERNAME
+      - SMTP_PASSWORD
+    networks:
+      - teachme-network
+
+networks:
+  teachme-network:
+      external: true

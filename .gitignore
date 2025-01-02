@@ -11,3 +11,5 @@
 
 local.settings.json
 target
+
+.env
